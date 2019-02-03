@@ -19,6 +19,9 @@ namespace Spotify_Ad_Blocker
         public Form1()
         {
             InitializeComponent();
+            var backuppath = @"C:\Windows\System32\drivers\etc\hostsbackup";
+            if (File.Exists(backuppath)) Remove();
+            else Enable();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,11 +35,12 @@ namespace Spotify_Ad_Blocker
                 string txt = client.DownloadString("https://raw.githubusercontent.com/theasern/Spotify-Ad-Blocker/master/Spotify-Ad-Blocker/hosts");
                 string[] txtS = new[] { txt };
                 File.AppendAllText(path, txt);
+                Remove();
                 MessageBox.Show("Done!", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unknown Error", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Error: " + ex.Message, "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
 
                 
@@ -51,6 +55,7 @@ namespace Spotify_Ad_Blocker
             {
                 File.Delete(path);
                 File.Move(backuppath, path);
+                Enable();
                 MessageBox.Show("Done!", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
@@ -59,6 +64,18 @@ namespace Spotify_Ad_Blocker
             }
 
 
+        }
+
+        internal void Remove()
+        {
+            button1.Enabled = false;
+            button2.Enabled = true;
+        }
+
+        internal void Enable()
+        {
+            button1.Enabled = true;
+            button2.Enabled = false;
         }
     }
 }

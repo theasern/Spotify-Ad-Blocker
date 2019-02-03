@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -40,6 +41,7 @@ namespace Spotify_Ad_Blocker
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
+
             }
         }
     }
