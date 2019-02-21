@@ -31,7 +31,7 @@ namespace Spotify_Ad_Blocker
                 }
                 catch (System.ComponentModel.Win32Exception ex)
                 {
-                    MessageBox.Show("This utility requires elevated priviledges to start correctly.", "Error: Administrator Privileges", MessageBoxButtons.OK);
+                    MessageBox.Show("Error! This application neeeds administrator privileges to block ads, because it adds a system network exception. For more info visit https://www.github.com/theasern/Spotify-Ad-Blocker", "Error: Administrator Privileges Needed", MessageBoxButtons.OK);
                     //                    Debug.Print(ex.Message);
                     return;
                 }

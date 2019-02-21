@@ -8,7 +8,6 @@ using System.Net;
 using System.Security.Permissions;
 using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Spotify_Ad_Blocker
@@ -36,7 +35,7 @@ namespace Spotify_Ad_Blocker
                 string[] txtS = new[] { txt };
                 File.AppendAllText(path, txt);
                 Remove();
-                MessageBox.Show("Done!", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Done! Ads are now DISABLED", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception ex)
             {
@@ -56,7 +55,7 @@ namespace Spotify_Ad_Blocker
                 File.Delete(path);
                 File.Move(backuppath, path);
                 Enable();
-                MessageBox.Show("Done!", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Done! Ads are now ACTIVE", "Spotify Ad Utility", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {
